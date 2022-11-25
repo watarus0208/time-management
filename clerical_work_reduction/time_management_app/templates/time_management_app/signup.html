@@ -1,0 +1,35 @@
+<!-- base.htmlを引き継ぐ -->
+{% extends "clerical_work_reduction/base.html" %}
+<!-- タイトルブロック -->
+{% block title %}Sign up{% endblock %}
+<!-- コンテンツブロック -->
+{% block content %}
+
+<!-- mt: mergin top  mb: mergin bottom -->
+<h1 class="h1 mt-2 mb-3 font-weight-normal">Singn up</h1>
+<!-- 文字を中央揃えに -->
+<div class="text-center">
+    <form action="" method="POST">
+        <!-- card/card-bodyにより外枠が表示される -->
+        <div class="card">
+            <div class="card-body">
+                {% csrf_token %}
+                <label>ユーザーID</label>
+                {{ form.username }}
+                {{ form.username.errors }}
+                <br>
+                <label>パスワード</label>
+                {{ form.password1 }}
+                {{ form.password1.errors }}
+                <br>
+                <label>パスワード（確認用）</label>
+                {{ form.password2 }}
+                {{ form.password2.errors }}
+                <br>
+            <!-- btn-primary:青色ボタン -->
+            <button class="btn btn-primary btn-lg btn-block" type="submit">登録</button>
+            </div>
+        </div>
+    </form>
+</div> 
+{% endblock %}
