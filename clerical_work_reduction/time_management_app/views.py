@@ -17,4 +17,4 @@ class LogoutView(LoginRequiredMixin, LogoutView):
 class SignUpView(CreateView):
     form_class = forms.SignUpForm
     template_name = 'time_management_app/signup.html'
-    success_url = reverse_lazy('time_management_app:home')
+    success_url = reverse_lazy('time_management_app:login')
