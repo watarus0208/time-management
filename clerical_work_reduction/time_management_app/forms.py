@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import get_user_model
 from django import forms
 
 class LoginForm(AuthenticationForm):
@@ -8,12 +9,17 @@ class LoginForm(AuthenticationForm):
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
 
+User = get_user_model()
 
-class SignUpForm(UserCreationForm):
+class SignupForm(UserCreationForm):
     def __int__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
+    
+    class Meta:
+        model = User
+        fields = ('username', 'email')
     
     # パスワード入力・非表示対応
     password = forms.CharField(widget=forms.PasswordInput(), label='パスワード')
