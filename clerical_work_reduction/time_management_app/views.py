@@ -21,5 +21,5 @@ class SignUpView(CreateView):
     
     def form_valid(self, form):
         user = form.save()
-        return redirect('time_management:login')        
+        return redirect('time_management_app:login')        
 

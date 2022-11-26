@@ -19,9 +19,4 @@ class SignupForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields = ('username', 'email')
-    
-    # パスワード入力・非表示対応
-    password = forms.CharField(widget=forms.PasswordInput(), label='パスワード')
-
-    
+        fields = ('username',)
