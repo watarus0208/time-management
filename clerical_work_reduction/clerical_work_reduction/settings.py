@@ -126,9 +126,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# ログオンが必要なページに認証していないユーザがアクセスした場合にリダイレクトするURL
-LOGIN_URL = '/login'
-# ログオン後にリダイレクトされるURL
-LOGIN_REDIRECT_URL = ''
+# ログインが必要なページに認証していないユーザがアクセスした場合にリダイレクトするURL
+LOGIN_URL = 'time_management:login'
+# ログイン後にリダイレクトされるURL
+LOGIN_REDIRECT_URL = 'time_management_app:home'
 # ログアウト後にリダイレクトされるURL
-LOGOUT_REDIRECT_URL = '/login'
+LOGOUT_REDIRECT_URL = 'time_management:login'
