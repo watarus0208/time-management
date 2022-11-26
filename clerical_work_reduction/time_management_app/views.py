@@ -18,8 +18,7 @@ class LogoutView(LoginRequiredMixin, LogoutView):
 class SignUpView(CreateView):
     form_class = forms.SignupForm
     template_name = 'time_management_app/signup.html'
-    
+
     def form_valid(self, form):
         user = form.save()
-        return redirect('time_management_app:login')        
-
+        return redirect('time_management_app:login')
