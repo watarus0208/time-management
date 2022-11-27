@@ -9,7 +9,7 @@ from .forms import LoginForm, SignupForm
 class LoginView(LoginView):
     form_class = LoginForm
     template_name = 'time_management_app/login.html'
-    
+     
 
 class LogoutView(LoginRequiredMixin, LogoutView):
     template_name = 'time_management_app/login.html'
@@ -26,3 +26,7 @@ class SignUpView(CreateView):
 
 class HomeView(LoginRequiredMixin, TemplateView):
     template_name = 'time_management_app/home.html'
+
+
+class MonthView(LoginRequiredMixin, TemplateView):
+    template_name = 'time_management_app/month.html'

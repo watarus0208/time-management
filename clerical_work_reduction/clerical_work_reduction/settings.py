@@ -119,7 +119,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'time_management_app/static/')
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -127,8 +131,8 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # ログインが必要なページに認証していないユーザがアクセスした場合にリダイレクトするURL
-LOGIN_URL = 'time_management:login'
+LOGIN_URL = 'time_management_app:login'
 # ログイン後にリダイレクトされるURL
 LOGIN_REDIRECT_URL = 'time_management_app:home'
 # ログアウト後にリダイレクトされるURL
-LOGOUT_REDIRECT_URL = 'time_management:login'
+LOGOUT_REDIRECT_URL = 'time_management_app:login'

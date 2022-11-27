@@ -1,0 +1,8 @@
+<!-- base.htmlを引き継ぐ -->
+{% extends "time_management_app/base.html" %}
+<!-- タイトルブロック -->
+{% block title %}Login{% endblock %}
+<!-- コンテンツブロック -->
+{% block content %}
+    <a href="{% url 'time_management_app:login' %}"class="btn btn-primary btn-lg btn-block">ログアウト</a>
+{% endblock %}
