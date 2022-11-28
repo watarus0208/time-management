@@ -45,7 +45,7 @@ class MonthView(LoginRequiredMixin, TemplateView):
             table_rows.append({'day': d+1, 'weekday': week_name[(d+first_day)%7]})
         table_data['table_data'] = table_rows
         return render(request, 'time_management_app/month.html', table_data)
-    
+
 
 class ConfigView(LoginRequiredMixin, TemplateView):
     template_name = 'time_management_app/config.html'
