@@ -1,25 +1,20 @@
 <!-- base.htmlを引き継ぐ -->
-{% extends "time_management_app/base.html" %}
+{% extends "./base.html" %}
 <!-- タイトルブロック -->
 {% block title %}Login{% endblock %}
 <!-- コンテンツブロック -->
 {% block content %}
-
 <!-- mt: mergin top  mb: mergin bottom -->
 <h1 class="h1 mt-2 mb-3 font-weight-normal">home</h1>
 <!-- 文字を中央揃えに -->
 <div class="text-center">
     <div id="app">
-        <div>
-            <p>現在時刻</p>
-            <div>
-                <p>ここに時刻</p>
-                <p>{{date}}</p>
-                <p>{{time}}</p>
-        </div>
+        <p>[[date]]</p>
+        <p>[[time]]</p>
     </div>
-    <a href="{% url 'time_management_app:month' %}"class="btn btn-primary btn-lg btn-block">月　次　表</a>
-    <a href="{% url 'time_management_app:login' %}"class="btn btn-primary btn-lg btn-block">設　　　定</a>
+    <a href="{% url 'time_management_app:month' %}"class="btn btn-primary btn-lg btn-block">退勤</a>
+    <a href="{% url 'time_management_app:month' %}"class="btn btn-primary btn-lg btn-block">月次表</a>
+    <a href="{% url 'time_management_app:config' %}"class="btn btn-primary btn-lg btn-block">設定</a>
     <a href="{% url 'time_management_app:login' %}"class="btn btn-primary btn-lg btn-block">ログアウト</a>
 </div>
 {% endblock %}

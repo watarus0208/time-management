@@ -30,3 +30,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
 
 class MonthView(LoginRequiredMixin, TemplateView):
     template_name = 'time_management_app/month.html'
+
+
+class ConfigView(LoginRequiredMixin, TemplateView):
+    template_name = 'time_management_app/config.html'
