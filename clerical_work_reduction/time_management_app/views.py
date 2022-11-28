@@ -33,15 +33,18 @@ class HomeView(LoginRequiredMixin, TemplateView):
 
 class MonthView(LoginRequiredMixin, TemplateView):
     template_name = 'time_management_app/month.html'
-    
+
     def get(self, request, **kwargs):
+        week_name = ['月', '火', '水', '木', '金', '土', '日']
+        table_rows = []
+        table_data={}
         date = datetime.datetime.today()
-        month_days = list(calendar.monthrange(date.year, date.month))
-        month_days[1] = month_days[1] + 1
-        params = {
-            'month_days': [d for d in range(*month_days)],
-        }
-        return render(request, 'time_management_app/month.html', params)
+        month_days = calendar.monthrange(date.year, date.month)[1]
+        first_day = calendar.weekday(date.year, date.month, 1)
+        for d in range(month_days):
+            table_rows.append({'day': d+1, 'weekday': week_name[(d+first_day)%7]})
+        table_data['table_data'] = table_rows
+        return render(request, 'time_management_app/month.html', table_data)
     
 
 class ConfigView(LoginRequiredMixin, TemplateView):

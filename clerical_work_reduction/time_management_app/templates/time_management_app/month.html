@@ -6,15 +6,48 @@
 {% block content %}
 
     <table class="table">
-        <tbody>
-        {% for day in month_days %}
+        <thead>
             <tr>
                 <td>
-                    {{ day }}
+                    日
+                </td>
+                <td>
+                    曜日
+                </td>
+                <td>
+                    開始時刻
+                </td>
+                <td>
+                    終了時刻
+                </td>
+                <td>
+                    予定
+                </td>
+                <td>
+                    進捗・課題
+                </td>                
+            </tr>
+        </thead>
+        <tbody>
+        {% for t in table_data %}
+            <tr>
+                <td>
+                    {{ t.day }}
+                </td>
+                <td>
+                    ({{ t.weekday }})
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-    <a href="{% url 'time_management_app:login' %}"class="btn btn-primary btn-lg btn-block">ログアウト</a>
+    <a href="{% url 'time_management_app:login' %}" class="btn btn-primary btn-lg btn-block">ログアウト</a>
 {% endblock %}
