@@ -1,11 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-class Users(models.Model):
-    first_name = models.CharField(max_length=10)
-    last_name = models.CharField(max_length=10)
+class User(AbstractUser):
     address = models.CharField(max_length=100,blank=True)
-    email = models.EmailField(max_length=200,blank=True)
-
+    
 
 class ContractCompanies(models.Model):
     name = models.CharField(max_length=50,blank=True)
@@ -20,8 +18,8 @@ class SalesPeople(models.Model):
     last_name = models.CharField(max_length=10)
     email = models.EmailField(max_length=200,blank=True)
     mobile_phone_number = models.CharField(max_length=12,blank=True)
-    user_id = models.IntegerField()
-    company_id = models.IntegerField()
+    user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='ユーザー')
+    company = models.ForeignKey(ContractCompanies, on_delete=models.PROTECT, verbose_name='契約会社')
 
 
 class Projects(models.Model):
@@ -32,17 +30,8 @@ class Projects(models.Model):
     lower_work_hours = models.IntegerField()
     assigned_job = models.CharField(max_length=50,blank=True)
     summary = models.CharField(max_length=100,blank=True)
-    user_id = models.IntegerField()
-    company_id = models.IntegerField()
-
-
-class Attendance(models.Model):
-    date = models.DateTimeField()
-    start_time = models.TimeField()
-    close_time = models.TimeField()
-    user_id = models.IntegerField()
-    project_id = models.IntegerField()
-    work_pattern_id = models.IntegerField()
+    user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='ユーザー')
+    company = models.ForeignKey(ContractCompanies, on_delete=models.PROTECT, verbose_name='契約会社')
 
 
 class WorkPattern(models.Model):
@@ -54,3 +43,11 @@ class WorkPattern(models.Model):
     close_overtime_break = models.TimeField()
     round_down_unit = models.IntegerField()
 
+
+class Attendance(models.Model):
+    date = models.DateTimeField()
+    start_time = models.TimeField()
+    close_time = models.TimeField()
+    user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='ユーザー')
+    project = models.ForeignKey(Projects, on_delete=models.PROTECT, verbose_name='プロジェクト')
+    work_pattern = models.ForeignKey(WorkPattern, on_delete=models.PROTECT, verbose_name='勤務パターン')
