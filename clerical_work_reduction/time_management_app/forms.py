@@ -28,11 +28,11 @@ class SignupForm(UserCreationForm):
 
 
 class MonthForm(forms.Form):
-    start_time = forms.TimeField()
-    close_time = forms.TimeField()
-    attendance_time = forms.TimeField()
-    work_time = forms.TimeField()
-    break_time = forms.TimeField()
-    overtime_break_time = forms.TimeField()
-    today_plan = forms.Textarea()
-    today_issue = forms.Textarea()
+    start_time = forms.TimeField(label='start_time')
+    close_time = forms.TimeField(label='close_time')
+    attendance_time = forms.TimeField(label='attendance_time')
+    work_time = forms.TimeField(label='work_time')
+    break_time = forms.TimeField(label='break_time')
+    overtime_break_time = forms.TimeField(label='overtime_break_time')
+    today_plan = forms.CharField(label='today_plan')
+    today_issue = forms.CharField(label='today_issue')

@@ -2,15 +2,16 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
-    address = models.CharField(max_length=100,blank=True, verbose_name='住所')
+    address = models.CharField(max_length=50, blank=True, verbose_name='住所')
     
 
 class ContractCompanies(models.Model):
-    name = models.CharField(max_length=50,blank=True, verbose_name='会社名')
-    address = models.CharField(max_length=50,blank=True, verbose_name='会社住所')
-    zip_code = models.CharField(max_length=8,blank=True, verbose_name='郵便番号')
-    president = models.CharField(max_length=20,blank=True, verbose_name='代表名')
-    phone_number = models.CharField(max_length=12,blank=True, verbose_name='電話番号')
+    name = models.CharField(max_length=50, verbose_name='会社名')
+    address = models.CharField(max_length=50, blank=True, verbose_name='会社住所')
+    zip_code = models.CharField(max_length=8, blank=True, verbose_name='郵便番号')
+    president = models.CharField(max_length=20, blank=True, verbose_name='代表名')
+    phone_number = models.CharField(max_length=12, blank=True, verbose_name='電話番号')
+    user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='ユーザー')
 
 
 class SalesPeople(models.Model):
@@ -45,7 +46,7 @@ class WorkPattern(models.Model):
 
 
 class Attendance(models.Model):
-    date = models.DateTimeField(verbose_name='年月日')
+    date = models.DateField(verbose_name='年月日')
     start_time = models.TimeField(verbose_name='勤務開始時刻')
     close_time = models.TimeField(verbose_name='勤務終了時刻')
     user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='ユーザー')
