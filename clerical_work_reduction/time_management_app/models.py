@@ -53,3 +53,4 @@ class WorkPattern(models.Model):
     start_overtime_break = models.TimeField()
     close_overtime_break = models.TimeField()
     round_down_unit = models.IntegerField()
+

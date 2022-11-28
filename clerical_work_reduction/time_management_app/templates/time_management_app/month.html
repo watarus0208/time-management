@@ -4,5 +4,17 @@
 {% block title %}Login{% endblock %}
 <!-- コンテンツブロック -->
 {% block content %}
+
+    <table class="table">
+        <tbody>
+        {% for day in month_days %}
+            <tr>
+                <td>
+                    {{ day }}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
     <a href="{% url 'time_management_app:login' %}"class="btn btn-primary btn-lg btn-block">ログアウト</a>
 {% endblock %}
