@@ -12,7 +12,7 @@ import datetime
 class LoginView(LoginView):
     form_class = LoginForm
     template_name = 'time_management_app/login.html'
-     
+
 
 class LogoutView(LoginRequiredMixin, LogoutView):
     template_name = 'time_management_app/login.html'
@@ -37,12 +37,13 @@ class MonthView(LoginRequiredMixin, TemplateView):
     def get(self, request, **kwargs):
         week_name = ['月', '火', '水', '木', '金', '土', '日']
         table_rows = []
-        table_data={}
+        table_data = {}
         date = datetime.datetime.today()
         month_days = calendar.monthrange(date.year, date.month)[1]
         first_day = calendar.weekday(date.year, date.month, 1)
         for d in range(month_days):
-            table_rows.append({'day': d+1, 'weekday': week_name[(d+first_day)%7]})
+            table_rows.append(
+                {'day': d+1, 'weekday': week_name[(d+first_day) % 7]})
         table_data['table_data'] = table_rows
         return render(request, 'time_management_app/month.html', table_data)
 
