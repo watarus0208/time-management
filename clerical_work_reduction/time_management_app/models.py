@@ -13,26 +13,42 @@ class ContractCompanies(models.Model):
     phone_number = models.CharField(max_length=12, blank=True, verbose_name='電話番号')
     user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='ユーザー')
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["name","user"],
+                name="attendance_unique"
+            ),
+        ]
+
 
 class SalesPeople(models.Model):
     first_name = models.CharField(max_length=10, verbose_name='名')
     last_name = models.CharField(max_length=10, verbose_name='氏')
     email = models.EmailField(max_length=200,blank=True, verbose_name='Eメール')
-    mobile_phone_number = models.CharField(max_length=12,blank=True, verbose_name='携帯電話番号')
+    mobile_phone_number = models.CharField(max_length=13,blank=True, verbose_name='携帯電話番号')
     user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='ユーザー')
     company = models.ForeignKey(ContractCompanies, on_delete=models.PROTECT, verbose_name='契約会社')
-
+    
 
 class Projects(models.Model):
     project_name = models.CharField(max_length=100, verbose_name='プロジェクト名')
-    start_month = models.CharField(max_length=2, verbose_name='開始月')
-    last_month = models.CharField(max_length=2, verbose_name='終了月')
+    start_date = models.DateField(max_length=2, verbose_name='契約開始日')
+    last_date = models.DateField(max_length=2, verbose_name='契約終了日')
     upper_work_hours = models.IntegerField(verbose_name='稼働上限時間')
     lower_work_hours = models.IntegerField(verbose_name='稼働下限時間')
     assigned_job = models.CharField(max_length=50,blank=True, verbose_name='担当業務')
     summary = models.CharField(max_length=100,blank=True, verbose_name='概要')
     user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='ユーザー')
     company = models.ForeignKey(ContractCompanies, on_delete=models.PROTECT, verbose_name='契約会社')
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["project_name","user","company"],
+                name="attendance_unique"
+            ),
+        ]
 
 
 class WorkPattern(models.Model):
@@ -52,3 +68,11 @@ class Attendance(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='ユーザー')
     project = models.ForeignKey(Projects, on_delete=models.PROTECT, verbose_name='プロジェクト')
     work_pattern = models.ForeignKey(WorkPattern, on_delete=models.PROTECT, verbose_name='勤務パターン')
+    
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["date","user","project"],
+                name="attendance_unique"
+            ),
+        ]

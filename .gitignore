@@ -1,4 +1,5 @@
 venv/*
+clerical_work_reduction/__pycache__/*
 clerical_work_reduction/time_management_app/__pycache__/*
 clerical_work_reduction/time_management_app/migrations/__pycache__/*
 clerical_work_reduction/db.sqlite3
