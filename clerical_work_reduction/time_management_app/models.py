@@ -20,7 +20,7 @@ class ContractCompanies(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=["name", "user"],
-                name="attendance_unique"
+                name="company_unique"
             ),
         ]
 
@@ -55,7 +55,7 @@ class Projects(models.Model):
         constraints = [
             models.UniqueConstraint(
                 fields=["project_name", "user", "company"],
-                name="attendance_unique"
+                name="project_unique"
             ),
         ]
 
