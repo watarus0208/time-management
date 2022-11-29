@@ -1,16 +1,16 @@
-<!-- base.htmlを引き継ぐ - ->
-{% extends "./base.html" % }
-<!-- タイトルブロック - ->
-{% block title % }Login{ % endblock % }
-<!-- コンテンツブロック - ->
-{% block content % }
-<!-- mt: mergin top  mb: mergin bottom - ->
-<h1 class = "h1 mt-2 mb-3 font-weight-normal" > home < /h1 >
-<!-- 文字を中央揃えに - ->
-<div class = "text-center" >
+<!-- base.htmlを引き継ぐ -->
+{% extends "./base.html" %}
+<!-- タイトルブロック -->
+{% block title % }Login{ % endblock %}
+<!-- コンテンツブロック -->
+{% block content %}
+<!-- mt: mergin top  mb: mergin bottom -->
+<h1 class = "h1 mt-2 mb-3 font-weight-normal" > home </h1>
+<!-- 文字を中央揃えに -->
+<div class = "text-center">
    <div id = "app" >
-        <p > [[date]] < /p >
-        <p > [[time]] < /p >
+        <p > [[date]] </p>
+        <p > [[time]] </p>
     </div >
     <a href = "{% url 'time_management_app:month' %}"class = "btn btn-primary btn-lg btn-block">退勤</a>
     <a href = "{% url 'time_management_app:month' %}"class = "btn btn-primary btn-lg btn-block">月次表</a>

@@ -1,28 +1,28 @@
-{% load static % }
-<!doctype html >
-<html lang = "ja" >
-   <head >
-       <!-- Required meta tags - ->
-        <meta charset = "utf-8" >
-        <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no" >
+{% load static %}
+<!doctype html>
+<html lang = "ja">
+   <head>
+       <!-- Required meta tags -->
+        <meta charset = "utf-8">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Bootstrap CSS - ->
-        <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin = "anonymous" >
+        <!-- Bootstrap CSS -->
+        <link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity = "sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin = "anonymous">
 
-        <title > { % block title % }{ % endblock % } < /title >
-    </head >
+        <title> {% block title %}{% endblock %} </title>
+    </head>
 
-    <body >
-       <!-- mt: mergin top 5 - ->
+    <body>
+       <!-- mt: mergin top 5 -->
         <div class = "container mt-5"></div>
 
-        <!-- body content block - ->
-        { % block content % }{% endblock %}
+        <!-- body content block -->
+        {% block content %}{% endblock %}
 
-        <!-- Optional JavaScript - ->
-        <!-- Vue first, then Bootstrap JS - ->
+        <!-- Optional JavaScript -->
+        <!-- Vue first, then Bootstrap JS -->
         <script src = "https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
         <script src = "{% static 'js/home.js' %}"></script>
         <script src = "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    </body >
-</html >
+    </body>
+</html>
