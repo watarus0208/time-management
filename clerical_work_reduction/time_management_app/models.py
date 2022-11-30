@@ -5,6 +5,9 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     address = models.CharField(max_length=50, blank=True, verbose_name='住所')
 
+    def __str__(self):
+        return self.username
+
 
 class ContractCompanies(models.Model):
     name = models.CharField(max_length=50, verbose_name='会社名')
@@ -24,6 +27,9 @@ class ContractCompanies(models.Model):
                 name="company_unique"
             ),
         ]
+
+    def __str__(self):
+        return self.name
 
 
 class SalesPeople(models.Model):
@@ -46,6 +52,9 @@ class SalesPeople(models.Model):
             ),
         ]
 
+    def __str__(self):
+        return self.first_name
+
 
 class Projects(models.Model):
     project_name = models.CharField(max_length=100, verbose_name='プロジェクト名')
@@ -62,12 +71,10 @@ class Projects(models.Model):
         ContractCompanies, on_delete=models.PROTECT, verbose_name='契約会社')
 
     class Meta:
-        constraints = [
-            models.UniqueConstraint(
-                fields=["project_name", "user", "company"],
-                name="project_unique"
-            ),
-        ]
+        verbose_name = "プロジェクト"
+
+    def __str__(self):
+        return self.project_name
 
 
 class WorkPattern(models.Model):
@@ -78,6 +85,12 @@ class WorkPattern(models.Model):
     start_overtime_break = models.TimeField(verbose_name='時間外休憩開始時刻')
     close_overtime_break = models.TimeField(verbose_name='時間外休憩終了時刻')
     round_down_unit = models.IntegerField(verbose_name='時間切捨単位')
+
+    class Meta:
+        verbose_name = "ワークパターン"
+
+    def __str__(self):
+        return str(self.start_time) + "-" + str(self.close_time) + " ("+str(self.round_down_unit)+"単位"+")"
 
 
 class Attendance(models.Model):
@@ -92,9 +105,13 @@ class Attendance(models.Model):
         WorkPattern, on_delete=models.PROTECT, verbose_name='勤務パターン')
 
     class Meta:
+        verbose_name = "勤怠"
         constraints = [
             models.UniqueConstraint(
                 fields=["date", "user", "project"],
                 name="attendance_unique"
             ),
         ]
+
+    def __str__(self):
+        return str(self.date) + "(" + self.user.first_name + ")"
