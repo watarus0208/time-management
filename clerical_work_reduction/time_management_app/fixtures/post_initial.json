@@ -1,0 +1,198 @@
+[
+    {
+        "model": "time_management_app.ContractCompanies",
+        "pk": 1,
+        "fields": {
+            "name": "テスト会社1",
+            "address": "東京都品川区テスト１",
+            "zip_code": "000-0000",
+            "president": "テスト代表取締役1",
+            "phone_number": "03-0000-0000",
+            "user": 1
+        }
+    },
+    {
+        "model": "time_management_app.SalesPeople",
+        "pk": 1,
+        "fields": {
+            "first_name": "サンプル名1",
+            "last_name": "サンプル氏1",
+            "email": "testsample1@gmail.com",
+            "mobile_phone_number": "03-0000-0000",
+            "user": 1,
+            "company": 1
+        }
+    },
+    {
+        "model": "time_management_app.Projects",
+        "pk": 1,
+        "fields": {
+            "project_name": "サンプルプロジェクト1",
+            "start_date": "2022-11-1",
+            "last_date": "2023-12-31",
+            "upper_work_hours": "180",
+            "lower_work_hours": "140",
+            "assigned_job": "サンプル担当業務1",
+            "summary": "概要サンプル1",
+            "user": 1,
+            "company": 1
+        }
+    },
+    {
+        "model": "time_management_app.WorkPattern",
+        "pk": 1,
+        "fields": {
+            "start_time": "09:30:00",
+            "close_time": "18:15:00",
+            "start_break_time": "12:00:00",
+            "close_break_time": "13:00:00",
+            "start_overtime_break": "18:15:00",
+            "close_overtime_break": "19:15:00",
+            "round_down_unit": "15"
+        }
+    },
+    {
+        "model": "time_management_app.Attendance",
+        "pk": 1,
+        "fields": {
+            "date": "2022-11-1",
+            "start_time": "09:30:00",
+            "close_time": "18:15:00",
+            "user": 1,
+            "project": 1,
+            "work_pattern": 1
+        }
+    },
+    {
+        "model": "time_management_app.Attendance",
+        "pk": 2,
+        "fields": {
+            "date": "2022-11-2",
+            "start_time": "09:30:00",
+            "close_time": "18:15:00",
+            "user": 1,
+            "project": 1,
+            "work_pattern": 1
+        }
+    },
+    {
+        "model": "time_management_app.Attendance",
+        "pk": 3,
+        "fields": {
+            "date": "2022-11-4",
+            "start_time": "09:30:00",
+            "close_time": "18:15:00",
+            "user": 1,
+            "project": 1,
+            "work_pattern": 1
+        }
+    },
+    {
+        "model": "time_management_app.Attendance",
+        "pk": 4,
+        "fields": {
+            "date": "2022-11-7",
+            "start_time": "09:30:00",
+            "close_time": "18:15:00",
+            "user": 1,
+            "project": 1,
+            "work_pattern": 1
+        }
+    },
+    {
+        "model": "time_management_app.Attendance",
+        "pk": 5,
+        "fields": {
+            "date": "2022-11-8",
+            "start_time": "09:30:00",
+            "close_time": "18:15:00",
+            "user": 1,
+            "project": 1,
+            "work_pattern": 1
+        }
+    },
+    {
+        "model": "time_management_app.Attendance",
+        "pk": 6,
+        "fields": {
+            "date": "2022-11-9",
+            "start_time": "09:30:00",
+            "close_time": "18:15:00",
+            "user": 1,
+            "project": 1,
+            "work_pattern": 1
+        }
+    },
+    {
+        "model": "time_management_app.Attendance",
+        "pk": 7,
+        "fields": {
+            "date": "2022-11-10",
+            "start_time": "09:30:00",
+            "close_time": "18:15:00",
+            "user": 1,
+            "project": 1,
+            "work_pattern": 1
+        }
+    },
+    {
+        "model": "time_management_app.Attendance",
+        "pk": 8,
+        "fields": {
+            "date": "2022-11-11",
+            "start_time": "09:30:00",
+            "close_time": "18:15:00",
+            "user": 1,
+            "project": 1,
+            "work_pattern": 1
+        }
+    },
+    {
+        "model": "time_management_app.Attendance",
+        "pk": 9,
+        "fields": {
+            "date": "2022-11-14",
+            "start_time": "09:30:00",
+            "close_time": "18:15:00",
+            "user": 1,
+            "project": 1,
+            "work_pattern": 1
+        }
+    },
+    {
+        "model": "time_management_app.Attendance",
+        "pk": 10,
+        "fields": {
+            "date": "2022-11-15",
+            "start_time": "09:30:00",
+            "close_time": "18:15:00",
+            "user": 1,
+            "project": 1,
+            "work_pattern": 1
+        }
+    },
+    {
+        "model": "time_management_app.Attendance",
+        "pk": 11,
+        "fields": {
+            "date": "2022-11-16",
+            "start_time": "09:30:00",
+            "close_time": "18:15:00",
+            "user": 1,
+            "project": 1,
+            "work_pattern": 1
+        }
+    },
+    {
+        "model": "time_management_app.Attendance",
+        "pk": 12,
+        "fields": {
+            "date": "2022-11-17",
+            "start_time": "09:30:00",
+            "close_time": "18:15:00",
+            "user": 1,
+            "project": 1,
+            "work_pattern": 1
+        }
+    }
+]

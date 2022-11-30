@@ -17,6 +17,7 @@ class ContractCompanies(models.Model):
         User, on_delete=models.PROTECT, verbose_name='ユーザー')
 
     class Meta:
+        verbose_name = "契約会社"
         constraints = [
             models.UniqueConstraint(
                 fields=["name", "user"],
@@ -35,6 +36,15 @@ class SalesPeople(models.Model):
         User, on_delete=models.PROTECT, verbose_name='ユーザー')
     company = models.ForeignKey(
         ContractCompanies, on_delete=models.PROTECT, verbose_name='契約会社')
+
+    class Meta:
+        verbose_name = "営業"
+        constraints = [
+            models.UniqueConstraint(
+                fields=["first_name", "last_name", "user", "company"],
+                name="salespeople_unique"
+            ),
+        ]
 
 
 class Projects(models.Model):

@@ -1,6 +1,6 @@
 const app = new Vue({
     el: '#app',
-    delimiters: ['[[', ']]:'],
+    delimiters: ['[[', ']]'],
     data: {
         date: '',
         time: '',
@@ -18,14 +18,12 @@ const app = new Vue({
                 current_date.getMinutes(), 2) + ':' + this.zeroPadding(current_date.getSeconds(), 2)
             // 現在の年月日
             this.date=this.zeroPadding(current_date.getFullYear(), 4) + '年' + this.zeroPadding(current_date.getMonth(
-            ) + 1, 2) + '月' + this.zeroPadding(current_date.getDate(), 2) + '日' + this.week[currentdate.getDay()]
+            ) + 1, 2) + '月' + this.zeroPadding(current_date.getDate(), 2) + '日' + this.week[current_date.getDay()]
         },
         zeroPadding: function(num, len) {
             let zero=''
             // 0の文字列を作成
-            for (var i=0
-                 i < len
-                 i++) {
+            for (var i=0; 1<len; i++) {
                 zero += '0'
             }
 
