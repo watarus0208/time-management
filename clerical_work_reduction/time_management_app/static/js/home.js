@@ -1,6 +1,6 @@
 const app = new Vue({
+    delimiters: ['[[', ']]'] ,
     el: '#app',
-    delimiters: ['[[', ']]'],
     data: {
         date: '',
         time: '',
