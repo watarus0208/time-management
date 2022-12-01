@@ -5,9 +5,11 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from .forms import LoginForm, SignupForm
 from .models import Attendance
+from . import mixins
 
 import calendar
 import datetime
+from collections import defaultdict
 
 
 class LoginView(LoginView):
@@ -32,24 +34,28 @@ class HomeView(LoginRequiredMixin, TemplateView):
     template_name = 'time_management_app/home.html'
 
 
-class MonthView(LoginRequiredMixin, TemplateView):
+class MonthView(mixins.MonthCalendarMixin, LoginRequiredMixin, TemplateView):
     template_name = 'time_management_app/month.html'
 
     def get(self, request, **kwargs):
-        week_name = ['月', '火', '水', '木', '金', '土', '日']
-        table_rows = []
-        table_data = {}
-        date = datetime.datetime.today()
-        month_days = calendar.monthrange(date.year, date.month)[1]
-        first_day = calendar.weekday(date.year, date.month, 1)
-        for d in range(month_days):
-            table_rows.append(
-                {'day': d+1, 'weekday': week_name[(d+first_day) % 7]})
-        table_data['table_data'] = table_rows
+        attendances = Attendance.objects.all() 
         
-        data = Attendance.objects.all()
-        print(data)
-        return render(request, 'time_management_app/month.html', table_data)
+        month_data = defaultdict(dict)
+        for d in range(self.month_days):
+            month_data[d+1]['weekday'] = self.weekday[(d+self.first_weekday)%7]
+        for a in attendances:
+            month_data[a.date.day]['start_time'] = a.start_time
+            month_data[a.date.day]['close_time'] = a.close_time
+            month_data[a.date.day]['attend_time'] = self.get_timedelta(a.start_time, a.close_time)
+            month_data[a.date.day]['work_time'] = self.get_timedelta(a.start_time, a.close_time) - self.get_timedelta(a.work_pattern.start_break_time, a.work_pattern.close_break_time) 
+            month_data[a.date.day]['break_time'] = self.get_timedelta(a.work_pattern.start_break_time, a.work_pattern.close_break_time)
+            month_data[a.date.day]['overtime_break_time'] = self.get_timedelta(a.work_pattern.start_break_time, a.work_pattern.close_break_time) 
+            month_data[a.date.day]['today_todo'] = a.today_todo
+            month_data[a.date.day]['today_issue'] = a.today_issue
+            month_data[a.date.day]['work_pattern'] = a.work_pattern
+        print(month_data)
+
+        return render(request, 'time_management_app/month.html', month_data)
 
 
 class ConfigView(LoginRequiredMixin, TemplateView):

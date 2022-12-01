@@ -23,7 +23,7 @@ class WorkPatternAdmin(admin.ModelAdmin):
 
 
 class AttendanceAdmin(admin.ModelAdmin):
-    list_display = ('date', 'start_time', 'close_time', 'user', 'project', 'work_pattern')
+    list_display = ('date', 'start_time', 'close_time', 'today_todo', 'today_issue', 'user', 'project', 'work_pattern')
 
 
 admin.site.register(models.User, UserAdmin)

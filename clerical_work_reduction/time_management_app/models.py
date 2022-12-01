@@ -97,6 +97,8 @@ class Attendance(models.Model):
     date = models.DateField(verbose_name='年月日')
     start_time = models.TimeField(verbose_name='勤務開始時刻')
     close_time = models.TimeField(verbose_name='勤務終了時刻')
+    today_todo = models.TextField(verbose_name='本日のToDo', blank=True)
+    today_issue = models.TextField(verbose_name='進捗と課題', blank=True)
     user = models.ForeignKey(
         User, on_delete=models.PROTECT, verbose_name='ユーザー')
     project = models.ForeignKey(
