@@ -4,6 +4,7 @@ from django.views.generic import CreateView, TemplateView
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from .forms import LoginForm, SignupForm
+from .models import Attendance
 
 import calendar
 import datetime
@@ -45,6 +46,9 @@ class MonthView(LoginRequiredMixin, TemplateView):
             table_rows.append(
                 {'day': d+1, 'weekday': week_name[(d+first_day) % 7]})
         table_data['table_data'] = table_rows
+        
+        data = Attendance.objects.all()
+        print(data)
         return render(request, 'time_management_app/month.html', table_data)
 
 

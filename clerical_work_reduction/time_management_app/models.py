@@ -114,4 +114,4 @@ class Attendance(models.Model):
         ]
 
     def __str__(self):
-        return str(self.date) + "(" + self.user.first_name + ")"
+        return self.user.username + " (" + str(self.date) + " " + str(self.start_time) + "~" + str(self.close_time) + ")"
