@@ -4,8 +4,8 @@
 {% block title %}Login{% endblock %}
 <!-- コンテンツブロック -->
 {% block content %}
-    <!-- <table class = "table"> -->
-       <!-- <thead>
+    <table class = "table">
+        <thead>
            <tr>
                 <td> 日 </td>
                 <td> 開始時刻 </td>
@@ -19,18 +19,14 @@
                 <td> 勤務パターン </td>
                 <td> </td>
             </tr>
-        </thead> -->
-        <!-- <tbody> -->
+        </thead>
+        <tbody>
         {% for key, value in calendar_data.items %}
-            <!-- <tr> -->
-                {{ key }}<br>
-                {{ value.weekday }}<br>
-            <!-- </tr > -->
-            <!-- <form method = "post">
+            <form method = "post">
             <tr>
-                <td> {{ m }}日({{ m.weekday }})</td>
-                <td> <input type="time"></td>
-                <td> <input type="time"></td>
+                <td> {{ key }}日({{ value.weekday }})</td>
+                <td> {{ value.start_time }} </td>
+                <td> <input type="time" name="start_time"></td>
                 <td> <input type="time"></td>
                 <td> <input type="time"></td>
                 <td> <input type="time"></td>
@@ -40,9 +36,9 @@
                 <td> <input></td>
                 <td> <button type="submit">送信</button></td>
             </tr >
-            </form > -->
+            </form >
         {% endfor %}
-        <!-- </tbody> -->
-    <!-- </table> -->
+        </tbody>
+    </table>
     <a href = "{% url 'time_management_app:login' %}" class="btn btn-primary btn-lg btn-block">ログアウト</a>
 {% endblock %}

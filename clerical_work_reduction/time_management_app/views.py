@@ -10,6 +10,7 @@ from . import mixins
 import calendar
 import datetime
 from collections import defaultdict
+import pprint
 
 
 class LoginView(LoginView):
@@ -41,7 +42,7 @@ class MonthView(mixins.MonthCalendarMixin, LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         calendar_context = self.get_calendar_data()
         context.update(calendar_context)
-        print(context)
+        pprint.pprint(context)
         return context
 
 
