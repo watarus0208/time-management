@@ -28,11 +28,11 @@ class SignupForm(UserCreationForm):
 
 
 class MonthForm(forms.Form):
-    start_time = forms.TimeField(label='start_time')
-    close_time = forms.TimeField(label='close_time')
-    attend_time = forms.TimeField(label='attendance_time')
-    work_time = forms.TimeField(label='work_time')
-    break_time = forms.TimeField(label='break_time')
-    overtime_break_time = forms.TimeField(label='overtime_break_time')
-    today_todo = forms.CharField(label='today_todo')
-    today_issue = forms.CharField(label='today_issue')
+    start_time = forms.TimeField(label='開始時刻')
+    close_time = forms.TimeField(label='終了時刻')
+    attend_time = forms.TimeField(label='勤務時間')
+    work_time = forms.TimeField(label='稼働時間')
+    break_time = forms.TimeField(label='休憩時間')
+    overtime_break_time = forms.TimeField(label='時間外休憩時間')
+    today_todo = forms.CharField(label='予定')
+    today_issue = forms.CharField(label='進捗')

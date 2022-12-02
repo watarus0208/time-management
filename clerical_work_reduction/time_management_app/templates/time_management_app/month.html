@@ -7,7 +7,7 @@
     <table class = "table">
         <thead>
            <tr>
-                <td> 日 </td>
+                <td> 日(曜日) </td>
                 <td> 開始時刻 </td>
                 <td> 終了時刻 </td>
                 <td> 勤務時間 </td>
@@ -16,8 +16,6 @@
                 <td> 時間外休憩時間 </td>
                 <td> 予定 </td>
                 <td> 進捗・課題 </td>
-                <td> 勤務パターン </td>
-                <td> </td>
             </tr>
         </thead>
         <tbody>
@@ -25,15 +23,14 @@
             <form method = "post">
             <tr>
                 <td> {{ key }}日({{ value.weekday }})</td>
-                <td> {{ value.start_time }} </td>
-                <td> <input type="time" name="start_time"></td>
-                <td> <input type="time"></td>
-                <td> <input type="time"></td>
-                <td> <input type="time"></td>
-                <td> <input type="time"></td>
-                <td> <input></td>
-                <td> <input></td>
-                <td> <input></td>
+                <td> <input type="time" value="{{ value.start_time }}"></td>
+                <td> <input type="time" value="{{ value.close_time }}"></td>
+                <td> <input type="time" value="{{ value.attend_time }}"></td>
+                <td> <input type="time" value="{{ value.work_time }}"></td>
+                <td> <input type="time" value="{{ value.break_time }}"></td>
+                <td> <input type="time" value="{{ value.overtime_break_time }}"></td>
+                <td> <input type="text" value="{{ value.today_todo }}"></td>
+                <td> <input type="text" value="{{ value.today_issue }}"></td>
                 <td> <button type="submit">送信</button></td>
             </tr >
             </form >
